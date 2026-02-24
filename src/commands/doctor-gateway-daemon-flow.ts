@@ -97,7 +97,13 @@ export async function maybeRepairGatewayDaemon(params: {
     return;
   }
 
-  const service = resolveGatewayService();
+  // Android: service management not supported, skip daemon checks
+  let service;
+  try {
+    service = resolveGatewayService();
+  } catch {
+    return;
+  }
   // systemd can throw in containers/WSL; treat as "not loaded" and fall back to hints.
   let loaded = false;
   try {

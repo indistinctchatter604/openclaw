@@ -151,5 +151,23 @@ export function resolveGatewayService(): GatewayService {
     };
   }
 
-  throw new Error(`Gateway service install not supported on ${process.platform}`);
+  // Android (Termux): no service manager available, return a no-op stub
+  return {
+    label: "android",
+    loadedText: "running",
+    notLoadedText: "not running",
+    install: async () => {
+      throw new Error("Service install not supported on Android");
+    },
+    uninstall: async () => {
+      throw new Error("Service install not supported on Android");
+    },
+    stop: async () => {},
+    restart: async () => {
+      throw new Error("Service restart not supported on Android");
+    },
+    isLoaded: async () => false,
+    readCommand: async () => null,
+    readRuntime: async () => ({ pid: undefined, startedAt: undefined }),
+  };
 }
