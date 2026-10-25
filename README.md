@@ -1,3 +1,6 @@
+CURRENTLY UNMAINTAINED-- FUNCTIONALITY IS IN OPENCLAW NOW
+
+
 # OpenClaw — Android/Termux Fork
 
 > 🦞 Unofficial Android compatibility fork of [OpenClaw](https://github.com/openclaw/openclaw)  
